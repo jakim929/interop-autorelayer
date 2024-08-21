@@ -15,16 +15,12 @@ import { privateKeyToAccount } from "viem/accounts";
 import { L2ToL2CrossDomainMessengerAbi } from "./abi/L2ToL2CrossDomainMessengerAbi";
 import { CrossL2InboxAbi } from "./abi/CrossL2InboxAbi";
 import { optimism } from "viem/chains";
-
-const RPC_URLS = ["http://127.0.0.1:9545", "http://127.0.0.1:9546"] as const;
+import { PRIVATE_KEY, RPC_URLS } from "./config";
 
 const crossL2InboxAddress =
 	"0x4200000000000000000000000000000000000022" as const;
 const l2ToL2CrossDomainMessengerAddress =
 	"0x4200000000000000000000000000000000000023" as const;
-
-const privateKey =
-	"0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80" as const;
 
 type ChainConfig = {
 	chainId: number;
@@ -60,7 +56,7 @@ const createChainConfigs = async () => {
 				}),
 				walletClient: createWalletClient({
 					transport: http(rpcUrl),
-					account: privateKeyToAccount(privateKey),
+					account: privateKeyToAccount(PRIVATE_KEY),
 					chain,
 				}),
 			};
