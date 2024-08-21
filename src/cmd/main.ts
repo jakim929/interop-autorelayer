@@ -16,12 +16,12 @@ import { L2ToL2CrossDomainMessengerAbi } from "../abi/L2ToL2CrossDomainMessenger
 import { CrossL2InboxAbi } from "../abi/CrossL2InboxAbi";
 import { optimism } from "viem/chains";
 
+const RPC_URLS = ["http://127.0.0.1:9545", "http://127.0.0.1:9546"] as const;
+
 const crossL2InboxAddress =
 	"0x4200000000000000000000000000000000000022" as const;
 const l2ToL2CrossDomainMessengerAddress =
 	"0x4200000000000000000000000000000000000023" as const;
-
-const rpcUrls = ["http://127.0.0.1:9545", "http://127.0.0.1:9546"] as const;
 
 const privateKey =
 	"0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80" as const;
@@ -33,11 +33,9 @@ type ChainConfig = {
 	walletClient: WalletClient<Transport, Chain, PrivateKeyAccount>;
 };
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 const createChainConfigs = async () => {
 	return await Promise.all(
-		rpcUrls.map(async (rpcUrl) => {
+		RPC_URLS.map(async (rpcUrl) => {
 			const publicClient = createPublicClient({
 				transport: http(rpcUrl),
 			});
