@@ -12,8 +12,8 @@ import {
 	type WalletClient,
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { L2ToL2CrossDomainMessengerAbi } from "../abi/L2ToL2CrossDomainMessengerAbi";
-import { CrossL2InboxAbi } from "../abi/CrossL2InboxAbi";
+import { L2ToL2CrossDomainMessengerAbi } from "./abi/L2ToL2CrossDomainMessengerAbi";
+import { CrossL2InboxAbi } from "./abi/CrossL2InboxAbi";
 import { optimism } from "viem/chains";
 
 const RPC_URLS = ["http://127.0.0.1:9545", "http://127.0.0.1:9546"] as const;

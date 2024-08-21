@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "tsx src/cmd/main.ts"
+    "start": "tsx src/main.ts"
   },
   "keywords": [],
   "author": "",
